@@ -1,0 +1,157 @@
+
+@import url(https://fonts.bunny.net/css?family=montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i);
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --byecorps-blue: #1b5652;
+    --byecorps-white: #e6feff;
+}
+
+html {
+    font-family: montserrat, sans-serif;
+
+    color: #1b5652;
+    background-color: #e6feff;
+}
+
+body {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.logo1 {
+    font-weight: 700;
+}
+
+.logo2 {
+    font-weight: 600;
+}
+
+.product {
+    border-radius: 1em;
+    position: relative;
+    text-align: center;
+    vertical-align: center;
+
+    width: 512px;
+    height: 128px;
+    margin: 1em auto;
+    background-color: black;
+
+    display: block;;
+}
+
+.product .productinfo {
+    /* position to the center of the container */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 2rem;
+    
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 4;
+
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    
+    color: white;
+}
+
+.product .productinfo > h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.product .productinfo > p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.product img {
+    border-radius: 1em;
+    z-index: 3;
+    position: relative;
+    
+    max-width: 512px;
+    
+    opacity: 1;
+    
+    transition: opacity 0.5s ease-in-out;
+    
+}
+
+.product:has(img) .productinfo {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+} 
+
+.product:hover .productinfo {
+    opacity: 1;
+}
+
+.product:hover img {
+    opacity: 0.2;
+}
+
+/* if .product does not have an image, then the productinfo will be visible */
+.product:not(:has(img)) .productinfo {
+    opacity: 1;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 2em;
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        width: 100%;
+        margin: 1em
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .product {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .product img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --black: #ffffff;
+        --white: #000000;
+        --byecorps-blue: #e6feff;
+        --byecorps-white: #1b5652;
+    }
+
+    html {
+        color: #e6feff;
+        background-color: #1b5652;
+    }
+
+    a {
+        color: #e6feff;
+    }
+}
+
