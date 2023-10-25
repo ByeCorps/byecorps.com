@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  deploy:
+    environment:
+      name: byecorps.com
+      url: https://byecorps.com
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.1
+    - run: rm -rf .git
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@6.0.0
+      with:
+        switches: -az --delete
+        path: .
+        remote_path: /var/www/byecorps.com
+        remote_host: potato.byemc.xyz
+        remote_user: byemc_updater
+        remote_key: ${{ secrets.DEPLOY_KEY }}
